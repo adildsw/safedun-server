@@ -2,14 +2,16 @@ import os
 import shutil
 import argparse
 import socket
+import atexit
 
 from backend import safedun
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, after_this_request
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+    cleanup()
     return render_template('index.html')
 
 @app.route('/execute', methods=['POST'])
@@ -29,7 +31,11 @@ def execute():
     obj = safedun(mode, key, cycle, path)
     obj.run()
 
-    return send_file('temp\\output.png', attachment_filename='output.png')
+    return send_file('temp\\output.png', as_attachment=True)
+
+def cleanup():
+    if os.path.exists('temp/'):
+        shutil.rmtree('temp/')
 
 if __name__ == "__main__":
     host_ip = socket.gethostbyname(socket.gethostname())
@@ -44,5 +50,7 @@ if __name__ == "__main__":
 
     if not argument.local == False:
         argument.host = '127.0.0.1'
+
+    atexit.register(cleanup)
 
     app.run(host=argument.host, port=argument.port, debug=argument.debug)
