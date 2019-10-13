@@ -33,7 +33,7 @@ def execute():
     obj = safedun(mode, key, cycle, path)
     obj.run()
 
-    osys = platform.release()
+    osys = platform.system()
 
     if osys == "Linux" or osys == "Darwin":
         output_file = 'temp/output.png'
