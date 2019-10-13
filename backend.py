@@ -16,7 +16,8 @@ class safedun:
         self.cycle = cycle
         self.path = path
         
-        self.PIXEL_LIMIT = 5 * 1024 * 1024
+        self.MAX_MB = 5 #maximum megabyte filesize allowed
+        self.PIXEL_LIMIT = self.MAX_MB * 1024 * 1024
         
         self.output_dir = 'temp/output.png'
         
@@ -96,7 +97,6 @@ class safedun:
                         self._channel_g[:, column] = numpy.roll(self._channel_g[:, column], roll_unit)
                     else:
                         self._channel_r[:, column] = numpy.roll(self._channel_r[:, column], roll_unit)
-
 
         return
 
