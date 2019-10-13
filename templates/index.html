@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>safedun server</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  <script>
+    function toggleExecBT() {
+      var text = document.getElementById('keyText');
+      var execBT = document.getElementById('executeBT');
+      var fileInput = document.getElementById('fileInput');
+      var fileText = document.getElementById('fileText');
+
+      if (text.value == '' || fileInput.files[0].name == '') {
+        execBT.disabled = true;
+      } else {
+        execBT.disabled = false;
+      }
+
+      if (fileInput.files[0].name != '') {
+        fileText.innerText = fileInput.files[0].name;
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+
+      <div class="box">
+
+        <figure class="image is-16by9">
+          <img src="static/splash.png" alt="logo">
+        </figure>
+
+        <form action='/execute' method='POST' enctype="multipart/form-data">
+          <div class="box">
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">
+                  Operation Mode
+                </label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <label class="radio">
+                      <input type="radio" name="mode" value="encode" checked>
+                      Encode
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="mode" value="decode">
+                      Decode
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">
+                  Cycle
+                </label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select name="cycle">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">
+                  Key
+                </label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" type="text" onkeyup="toggleExecBT()" id="keyText" name="key">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">
+                  File
+                </label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div id="file-js-example" class="file has-name">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="file" id="fileInput" accept="image/*" onchange="toggleExecBT()">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Choose a file…
+                        </span>
+                      </span>
+                      <span class="file-name" id="fileText">
+                        No file uploaded
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" id="executeBT" type="submit" disabled>
+                      Execute
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </section>
+</body>
+
+</html>
