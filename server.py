@@ -3,6 +3,7 @@ import shutil
 import argparse
 import socket
 import atexit
+import platform
 
 from backend import safedun
 from flask import Flask, render_template, request, send_file, after_this_request
@@ -27,11 +28,19 @@ def execute():
     key = request.form['key']
     cycle = int(request.form['cycle'])
     path = 'temp/input.png'
+    output_file = 'temp\\output.png'
 
     obj = safedun(mode, key, cycle, path)
     obj.run()
 
-    return send_file('temp\\output.png', as_attachment=True)
+    osys = platform.release()
+
+    if osys == "Linux" or osys == "Darwin":
+        output_file = 'temp/output.png'
+    elif osys == "Windows":
+        output_file = 'temp\\output.png'
+
+    return send_file(output_file, as_attachment=True)
 
 def cleanup():
     if os.path.exists('temp/'):
