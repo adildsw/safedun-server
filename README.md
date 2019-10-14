@@ -31,7 +31,7 @@ cd safedun-server
 ```
 
 ### Running safedun-server
-Once the server is up and running, the terminal/command prompt should look like this:
+Once the server is up and running, the terminal/command prompt should return the following message:
 ```
 * Serving Flask app "server" (lazy loading)
 * Environment: production
@@ -42,8 +42,16 @@ Once the server is up and running, the terminal/command prompt should look like 
 ```
 Open the address ```http://x.x.x.x:port/``` in your browser to run safedun-server.
 
+<img src='https://github.com/adildsw/safedun-server/blob/master/assets/screen.png' />
+
 ### Closing the server
 Open the terminal/command prompt running the server and press ```CTRL+C``` to terminate the server.
+
+## Results
+
+  Cycle                    |  Key                    |  Original Image           |  Scrambled Image
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+15  |  thisIStotallyCrAzY  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/output.png)
 
 ## Built With
 * [Flask](https://palletsprojects.com/p/flask/) - Web Framework
