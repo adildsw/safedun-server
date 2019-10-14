@@ -34,10 +34,6 @@ cd safedun-server
 ```
 python server.py
 ```
-
-<img align='center' src='https://github.com/adildsw/safedun-server/blob/master/assets/run-terminal.png' />
-
-### Opening safedun-server
 Once the server is up and running, the terminal/command prompt should return the following message:
 ```
 * Serving Flask app "server" (lazy loading)
@@ -47,6 +43,9 @@ Once the server is up and running, the terminal/command prompt should return the
 * Debug mode: off
 * Running on http://x.x.x.x:port/ (Press CTRL+C to quit)
 ```
+```http://x.x.x.x:port/``` is the address of the hosted server
+
+### Opening safedun-server
 Open the address ```http://x.x.x.x:port/``` in your browser to open safedun-server.
 
 <img src='https://github.com/adildsw/safedun-server/blob/master/assets/screen.png' />
@@ -55,7 +54,25 @@ Open the address ```http://x.x.x.x:port/``` in your browser to open safedun-serv
 Open the terminal/command prompt running the server and press ```CTRL+C``` to terminate the server.
 
 ## Configuration
-safedun-server offers 
+safedun-server allows users to change the default host IP, port number and activate debug mode.
+
+### Starting the server in localhost
+```
+python server.py --local True
+```
+
+### Starting the server in a custom host IP/port
+```
+python server.py --host x.x.x.x --port xxxx
+```
+
+### Starting the server in debugging mode
+```
+python server.py --debug True
+```
+
+#### NOTE: By default, safedun-server attempts to host the server in the system's local network with the default port ```5000```
+
 
 ## Results
 
