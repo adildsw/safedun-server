@@ -4,9 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>safedun server</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <title>safedun-server</title>
+  <link rel="stylesheet" href="static/css/bulma.min.css">
 
   <script>
     function toggleExecBT() {
@@ -26,17 +25,15 @@
       }
     }
   </script>
-
 </head>
 
 <body>
   <section class="section">
     <div class="container">
-
       <div class="box">
 
         <figure class="image is-16by9">
-          <img src="static/splash.png" alt="logo">
+          <img src="static/assets/splash.png" alt="logo">
         </figure>
 
         <form action='/execute' method='POST' enctype="multipart/form-data">
@@ -117,7 +114,7 @@
                       <input class="file-input" type="file" name="file" id="fileInput" accept="image/*" onchange="toggleExecBT()">
                       <span class="file-cta">
                         <span class="file-icon">
-                          <i class="fas fa-upload"></i>
+                          <img src="static/assets/upload.png"></img>
                         </span>
                         <span class="file-label">
                           Choose a file…
@@ -151,8 +148,6 @@
       </div>
 
     </div>
-
   </section>
 </body>
-
 </html>
