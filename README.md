@@ -19,13 +19,28 @@ pip install numpy opencv-python flask
 ```
 
 ### Installing
-
-#### Clone repository
-Clone safedun-server repository in your system using the following command:
+Clone safedun-server repository into your system using the following command:
 ```
 git clone https://github.com/adildsw/safedun-server.git
 ```
-### Launch server
+
+### Launching the server
+Navigate to the cloned repository directory.
+```
+cd safedun-server
+```
+
+### Running safedun-server
+Once the server is up and running, the terminal/command prompt should look like this:
+<img align='center' src='https://github.com/adildsw/safedun-server/blob/master/assets/run-terminal.png' />
+```
+* Serving Flask app "server" (lazy loading)
+* Environment: production
+  WARNING: This is a development server. Do not use it in a production deployment.
+  Use a production WSGI server instead.
+* Debug mode: off
+* Running on http://192.168.0.101:5000/ (Press CTRL+C to quit)
+```
 
 ## Built With
 * [Flask](https://palletsprojects.com/p/flask/) - Web Framework
