@@ -1,7 +1,7 @@
 # safedun-server
 **A responsive web application for server-side image scrambling.**
 
-<img align='center' src='https://github.com/adildsw/safedun-server/blob/master/assets/logo.png' />
+<img align='center' src='https://github.com/adildsw/safedun-server/blob/master/.github/logo.png' />
 
 <b>safedun-server</b> is a responsive web application for server-side image scrambling. Built with a very specific purpose of maintaining image privacy over web sharing, safedun-server can be hosted on the local network server, facilitating image scrambling directly to other devices on the network. safedun-server is made using a responsive, mobile-first web framework, making it platform-independent and usable over most mobile devices and computers alike.
 
@@ -48,7 +48,7 @@ Once the server is up and running, the terminal/command prompt should return the
 ### Opening safedun-server
 Open the address ```http://x.x.x.x:port/``` in your browser to open safedun-server.
 
-<img src='https://github.com/adildsw/safedun-server/blob/master/assets/screen.png' />
+<img src='https://github.com/adildsw/safedun-server/blob/master/.github/screen.png' />
 
 ### Closing the server
 Open the terminal/command prompt running the server and press ```CTRL+C``` to terminate the server.
@@ -78,10 +78,10 @@ python server.py --debug True
 
   Cycle                    |  Key                      |  Original Image           |  Scrambled Image
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-1  |  @mAz!ng  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/1_@mAz!ng_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/1_@mAz!ng_output.png)
-5  |  van!llaTEA  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/5_van!llaTEA_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/5_van!llaTEA_output.png)
-10  |  thisIStotallyCrAzY  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/10_thisIStotallyCrAzY_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/10_thisIStotallyCrAzY_output.png)
-20  |  Sp@gheTT!  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/20_Sp@gheTT!_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/20_Sp@gheTT!_output.png)
+1  |  @mAz!ng  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/1_@mAz!ng_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/1_@mAz!ng_output.png)
+5  |  van!llaTEA  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/5_van!llaTEA_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/5_van!llaTEA_output.png)
+10  |  thisIStotallyCrAzY  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/10_thisIStotallyCrAzY_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/10_thisIStotallyCrAzY_output.png)
+20  |  Sp@gheTT!  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/20_Sp@gheTT!_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/.github/20_Sp@gheTT!_output.png)
 
 ## Built With
 * [Flask](https://palletsprojects.com/p/flask/) - Web Framework
