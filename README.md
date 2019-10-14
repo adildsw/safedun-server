@@ -49,9 +49,12 @@ Open the terminal/command prompt running the server and press ```CTRL+C``` to te
 
 ## Results
 
-  Cycle                    |  Key                    |  Original Image           |  Scrambled Image
+  Cycle                    |  Key                      |  Original Image           |  Scrambled Image
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-15  |  thisIStotallyCrAzY  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/output.png)
+1  |  @mAz!ng  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/1_@mAz!ng_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/1_@mAz!ng_output.png)
+5  |  van!llaTEA  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/5_van!llaTEA_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/5_van!llaTEA_output.png)
+10  |  thisIStotallyCrAzY  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/10_thisIStotallyCrAzY_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/10_thisIStotallyCrAzY_output.png)
+20  |  Sp@gheTT!  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/20_Sp@gheTT!_input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/20_Sp@gheTT!_output.png)
 
 ## Built With
 * [Flask](https://palletsprojects.com/p/flask/) - Web Framework
