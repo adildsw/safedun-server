@@ -97,6 +97,9 @@ python server.py --debug True
 * [Flask](https://palletsprojects.com/p/flask/) - Web Framework
 * [Bulma](https://bulma.io) - CSS Framework
 
+## References
+>[Upload Icon](https://github.com/adildsw/safedun-server/blob/master/static/assets/upload.png) is obtained from [FontAwesome](https://fontawesome.com) made available under [Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/legalcode).
+
 ## License
 MIT License
 
