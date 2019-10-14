@@ -32,15 +32,18 @@ cd safedun-server
 
 ### Running safedun-server
 Once the server is up and running, the terminal/command prompt should look like this:
-<img align='center' src='https://github.com/adildsw/safedun-server/blob/master/assets/run-terminal.png' />
 ```
 * Serving Flask app "server" (lazy loading)
 * Environment: production
   WARNING: This is a development server. Do not use it in a production deployment.
   Use a production WSGI server instead.
 * Debug mode: off
-* Running on http://192.168.0.101:5000/ (Press CTRL+C to quit)
+* Running on http://x.x.x.x:port/ (Press CTRL+C to quit)
 ```
+Open the address ```http://x.x.x.x:port/``` in your browser to run safedun-server.
+
+### Closing the server
+Open the terminal/command prompt running the server and press ```CTRL+C``` to terminate the server.
 
 ## Built With
 * [Flask](https://palletsprojects.com/p/flask/) - Web Framework
