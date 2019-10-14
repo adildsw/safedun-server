@@ -34,7 +34,7 @@ cd safedun-server
 ```
 python server.py
 ```
-Once the server is up and running, the terminal/command prompt should return the following message:
+Upon successful server hosting, the terminal/command prompt should return the following message:
 ```
 * Serving Flask app "server" (lazy loading)
 * Environment: production
@@ -46,12 +46,15 @@ Once the server is up and running, the terminal/command prompt should return the
 ```http://x.x.x.x:port/``` is the address of the hosted server.
 
 ### Opening safedun-server
-Open the address ```http://x.x.x.x:port/``` in your browser to open safedun-server.
+Once the server is up and running, open the address ```http://x.x.x.x:port/``` (refer to terminal/command prompt running the server) in your browser to open safedun-server.
 
 <img src='https://github.com/adildsw/safedun-server/blob/master/assets/screen.png' />
 
 ### Closing the server
 Open the terminal/command prompt running the server and press ```CTRL+C``` to terminate the server.
+
+## How to use
+safedun-server offers the functionality of encoding and decoding images. 
 
 ## Configuration
 safedun-server allows users to change the default host IP, port number and activate debug mode.
