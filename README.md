@@ -49,9 +49,7 @@ Open the terminal/command prompt running the server and press ```CTRL+C``` to te
 
 ## Results
 
-  Cycle                    |  Key                    |  Original Image           |  Scrambled Image
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-15  |  thisIStotallyCrAzY  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/input.png)  |  ![](https://github.com/adildsw/safedun-server/blob/master/assets/output.png)
+
 
 ## Built With
 * [Flask](https://palletsprojects.com/p/flask/) - Web Framework
