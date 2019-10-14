@@ -9,22 +9,24 @@ import cv2
 import numpy
 import math
 
+from io import BytesIO
+
 class safedun:
-    def __init__(self, mode, key, cycle, path):
+    def __init__(self, mode, key, cycle, file, max_size=5):
         self.mode = mode
         self.key = key
         self.cycle = cycle
-        self.path = path
+        self.file = file
 
-        self.MAX_MB = 5 #maximum megabyte filesize allowed
-        self.PIXEL_LIMIT = self.MAX_MB * 1024 * 1024
-
-        self.output_dir = 'temp/output.png'
+        self.max_size = max_size #maximum megabyte filesize allowed
+        self.PIXEL_LIMIT = self.max_size * 1024 * 1024
 
         return
 
     def _preprocess(self):
-        self.img = cv2.imread(self.path)
+        self.img = numpy.fromfile(self.file, numpy.uint8)
+        self.img = cv2.imdecode(self.img, cv2.IMREAD_COLOR)
+
         self._height, self._width, self._channel = self.img.shape
 
         pixel_count = self._height * self._width * self._channel
@@ -59,7 +61,6 @@ class safedun:
         self._width = math.floor(self._width)
 
         self.img = cv2.resize(self.img, (self._width, self._height))
-        cv2.imwrite(self.path, self.img)
 
         return
 
@@ -144,9 +145,10 @@ class safedun:
         self.processed_img[..., 1] = self._channel_g
         self.processed_img[..., 2] = self._channel_r
 
-        cv2.imwrite(self.output_dir, self.processed_img)
+        _, processed_img_buffer = cv2.imencode(".png", self.processed_img)
+        output_file = BytesIO(processed_img_buffer)
 
-        return
+        return output_file
 
     def run(self):
         self._preprocess()
@@ -156,6 +158,6 @@ class safedun:
         elif self.mode.upper() == "DECODE":
             self._decode()
 
-        self._saveResult()
+        output_file = self._saveResult()
 
-        return
+        return output_file

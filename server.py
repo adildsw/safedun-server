@@ -1,50 +1,26 @@
-import os
-import shutil
 import argparse
 import socket
-import atexit
-import platform
 
 from backend import safedun
-from flask import Flask, render_template, request, send_file, after_this_request
+from flask import Flask, render_template, request, send_file
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    cleanup()
     return render_template('index.html')
 
 @app.route('/execute', methods=['POST'])
 def execute():
-    if os.path.exists('temp/'):
-        shutil.rmtree('temp/')
-    os.mkdir('temp/')
-
-    file = request.files['file']
-    file.save('temp/input.png')
-
     mode = request.form['mode']
     key = request.form['key']
     cycle = int(request.form['cycle'])
-    path = 'temp/input.png'
-    output_file = 'temp\\output.png'
+    file = request.files['file']
 
-    obj = safedun(mode, key, cycle, path)
-    obj.run()
+    obj = safedun(mode, key, cycle, file)
+    output_file = obj.run()
 
-    osys = platform.system()
-
-    if osys == "Linux" or osys == "Darwin":
-        output_file = 'temp/output.png'
-    elif osys == "Windows":
-        output_file = 'temp\\output.png'
-
-    return send_file(output_file, as_attachment=True)
-
-def cleanup():
-    if os.path.exists('temp/'):
-        shutil.rmtree('temp/')
+    return send_file(output_file, as_attachment=True, attachment_filename="output.png")
 
 if __name__ == "__main__":
     host_ip = socket.gethostbyname(socket.gethostname())
@@ -59,7 +35,5 @@ if __name__ == "__main__":
 
     if not argument.local == False:
         argument.host = '127.0.0.1'
-
-    atexit.register(cleanup)
 
     app.run(host=argument.host, port=argument.port, debug=argument.debug)
