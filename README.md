@@ -3,12 +3,12 @@
 
 <img align='center' src='https://github.com/adildsw/safedun-server/blob/master/assets/logo.png' />
 
-<b>safedun-server</b> is a responsive web application for server-side image scrambling. Built with a very specific purpose of maintaining image privacy over web sharing, safedun-server can be hosted on the local network server, facilitating image scrambling directly to other devices on the network. Additionally, safedun-server can be hosted on any custom server/port.
+<b>safedun-server</b> is a responsive web application for server-side image scrambling. Built with a very specific purpose of maintaining image privacy over web sharing, safedun-server can be hosted on the local network server, facilitating image scrambling directly to other devices on the network. safedun-server is made using a responsive, mobile-first web framework, making it platform-independent and usable over most mobile devices and computers alike.
 
 ## Getting Started
 The following instructions will help you get safedun-server up and running in your preferred server/port. Before proceeding to the installation, make sure that your system contains all the prerequisites.
 
-### Prerequisites
+## Prerequisites
 safedun-server is built on Python and uses external libraries like numpy, opencv and flask. Follow the instructions below to setup your system.
 
 #### 1. Install Python 3.6+ ([Anaconda](https://www.anaconda.com/download/) distribution recommended)
@@ -18,19 +18,26 @@ Run the following command on the terminal/command prompt to install all the depe
 pip install numpy opencv-python flask
 ```
 
-### Installing
+## Installing
 Clone safedun-server repository into your system using the following command:
 ```
 git clone https://github.com/adildsw/safedun-server.git
 ```
 
-### Launching the server
-Navigate to the cloned repository directory.
+## Running safedun-server
+### Starting the server
+#### Navigate to the cloned repository directory.
 ```
 cd safedun-server
 ```
+#### Start the server
+```
+python server.py
+```
 
-### Running safedun-server
+<img align='center' src='https://github.com/adildsw/safedun-server/blob/master/assets/run-terminal.png' />
+
+### Opening safedun-server
 Once the server is up and running, the terminal/command prompt should return the following message:
 ```
 * Serving Flask app "server" (lazy loading)
@@ -40,12 +47,15 @@ Once the server is up and running, the terminal/command prompt should return the
 * Debug mode: off
 * Running on http://x.x.x.x:port/ (Press CTRL+C to quit)
 ```
-Open the address ```http://x.x.x.x:port/``` in your browser to run safedun-server.
+Open the address ```http://x.x.x.x:port/``` in your browser to open safedun-server.
 
 <img src='https://github.com/adildsw/safedun-server/blob/master/assets/screen.png' />
 
 ### Closing the server
 Open the terminal/command prompt running the server and press ```CTRL+C``` to terminate the server.
+
+## Configuration
+safedun-server offers 
 
 ## Results
 
