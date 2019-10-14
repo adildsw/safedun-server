@@ -54,7 +54,15 @@ Once the server is up and running, open the address ```http://x.x.x.x:port/``` (
 Open the terminal/command prompt running the server and press ```CTRL+C``` to terminate the server.
 
 ## How to use
-safedun-server offers the functionality of encoding and decoding images. 
+safedun-server offers the functionality of scrambling and unscrambling images using specific keyphrases and cycles.
+### Instructions
+1. <b>Operation Mode:</b> choose whether you want to scramble or unscramble an image
+2. <b>Cycle:</b> select the number of cycles you the want the scrambling/unscrambling to go over
+3. <b>Key:</b> input the key you want to scramble/unscramble the image over
+4. <b>File:</b> select the image file you want to scramble/unscramble
+
+#### NOTE: Unscrambling should be done with the same key and cycle which was used while scrambling the image.
+#### NOTE: Do not transfer scrambled image over lossy channels. ORIGINAL IMAGE WILL BE LOST FOREVER.
 
 ## Configuration
 safedun-server allows users to change the default host IP, port number and activate debug mode.
@@ -75,7 +83,6 @@ python server.py --debug True
 ```
 
 #### NOTE: By default, safedun-server attempts to host the server in the system's local network with the default port ```5000```.
-
 
 ## Results
 
