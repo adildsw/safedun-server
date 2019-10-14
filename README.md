@@ -43,7 +43,7 @@ Once the server is up and running, the terminal/command prompt should return the
 * Debug mode: off
 * Running on http://x.x.x.x:port/ (Press CTRL+C to quit)
 ```
-```http://x.x.x.x:port/``` is the address of the hosted server
+```http://x.x.x.x:port/``` is the address of the hosted server.
 
 ### Opening safedun-server
 Open the address ```http://x.x.x.x:port/``` in your browser to open safedun-server.
@@ -71,7 +71,7 @@ python server.py --host x.x.x.x --port xxxx
 python server.py --debug True
 ```
 
-#### NOTE: By default, safedun-server attempts to host the server in the system's local network with the default port ```5000```
+#### NOTE: By default, safedun-server attempts to host the server in the system's local network with the default port ```5000```.
 
 
 ## Results
