@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+safedun-server
+
+Created on Sun Oct 13 00:00:00 2019
+Author: Adil Rahman
+GitHub: https://github.com/adildsw/safedun-server
+
+"""
+
 import argparse
 import socket
 
@@ -17,8 +27,8 @@ def execute():
     cycle = int(request.form['cycle'])
     file = request.files['file']
 
-    obj = safedun(mode, key, cycle, file)
-    output_file = obj.run()
+    scrambler = safedun()
+    output_file = scrambler.generate(mode, cycle, key, file)
 
     return send_file(output_file, as_attachment=True, attachment_filename="output.png")
 

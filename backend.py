@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Oct 13 00:24:26 2019
+safedun-server Backend
 
-@author: AdilDSW
+Created on Sun Oct 13 00:00:00 2019
+Author: Adil Rahman
+GitHub: https://github.com/adildsw/safedun-server
+
 """
 
 import cv2
@@ -12,11 +15,13 @@ import math
 from io import BytesIO
 
 class safedun:
-    def __init__(self, mode, key, cycle, file, max_size=5):
-        self.mode = mode
-        self.key = key
-        self.cycle = cycle
-        self.file = file
+    def __init__(self, max_size=5):
+        """
+        Parameters
+        ----------
+        max_size : int, optional
+            Maximum size of the output file (in megabytes) (default: 5)
+        """
 
         self.max_size = max_size #maximum megabyte filesize allowed
         self.PIXEL_LIMIT = self.max_size * 1024 * 1024
@@ -24,10 +29,13 @@ class safedun:
         return
 
     def _preprocess(self):
-        self.img = numpy.fromfile(self.file, numpy.uint8)
-        self.img = cv2.imdecode(self.img, cv2.IMREAD_COLOR)
+        """Loading image from buffer, checking for memory spills, splitting
+        image channels, and calculating various factors for operation.
+        """
+        self._img = numpy.fromfile(self.file, numpy.uint8)
+        self._img = cv2.imdecode(self._img, cv2.IMREAD_COLOR)
 
-        self._height, self._width, self._channel = self.img.shape
+        self._height, self._width, self._channel = self._img.shape
 
         pixel_count = self._height * self._width * self._channel
 
@@ -37,17 +45,18 @@ class safedun:
         self._h_factor = math.ceil(self._height/1000)
         self._w_factor = math.ceil(self._width/1000)
 
-        self._channel_b = numpy.copy(self.img[:, :, 0])
-        self._channel_g = numpy.copy(self.img[:, :, 1])
-        self._channel_r = numpy.copy(self.img[:, :, 2])
+        self._channel_b = numpy.copy(self._img[:, :, 0])
+        self._channel_g = numpy.copy(self._img[:, :, 1])
+        self._channel_r = numpy.copy(self._img[:, :, 2])
 
-        self.processed_img = numpy.zeros((self._height, self._width, self._channel))
+        self._processed_img = numpy.zeros((self._height, self._width, self._channel))
 
         self._key_length = len(self.key)
 
         return
 
     def _resize(self):
+        """Resizing image."""
         if self._height > self._width:
             ratio = self._height/self._width
             self._height = math.sqrt((self.PIXEL_LIMIT * ratio)/3)
@@ -60,11 +69,13 @@ class safedun:
         self._height = math.floor(self._height)
         self._width = math.floor(self._width)
 
-        self.img = cv2.resize(self.img, (self._width, self._height))
+        self._img = cv2.resize(self._img, (self._width, self._height))
 
         return
 
-    def _encode(self):
+    def _scramble(self):
+        """Scrambling the channels of the image."""
+
         for i in range(self.cycle):
             key_idx = 0
             shift_direction = 0
@@ -102,7 +113,9 @@ class safedun:
 
         return
 
-    def _decode(self):
+    def _unscramble(self):
+        """Unscrambling the channels of the image."""
+
         for i in range(self.cycle):
             key_idx = 0
             shift_direction = 0
@@ -140,24 +153,60 @@ class safedun:
 
         return
 
-    def _saveResult(self):
-        self.processed_img[..., 0] = self._channel_b
-        self.processed_img[..., 1] = self._channel_g
-        self.processed_img[..., 2] = self._channel_r
+    def _result(self):
+        """Combines all the scrambled channels into one image matrix, converts
+        the matrix into a BytesIO buffer and returns it.
 
-        _, processed_img_buffer = cv2.imencode(".png", self.processed_img)
+        Returns
+        -------
+        BytesIO Buffer
+            The image after scramble/unscramble operation stored in a BytesIO
+            buffer
+        """
+
+        self._processed_img[..., 0] = self._channel_b
+        self._processed_img[..., 1] = self._channel_g
+        self._processed_img[..., 2] = self._channel_r
+
+        _, processed_img_buffer = cv2.imencode(".png", self._processed_img)
         output_file = BytesIO(processed_img_buffer)
 
         return output_file
 
-    def run(self):
+    def generate(self, mode, cycle, key, file):
+        """Runs the pipeline to generate and return the resultant image in the
+        form of a BytesIO buffer.
+
+        Parameters
+        ----------
+        mode : str
+            The operation mode chosen (scramble/unscramble)
+        key : str
+            The keyphrase used to scramble/unscramble the image
+        cycle : int
+            Number of scrambling/unscrambling iterations
+        file : werkzeug.FileStorage
+            Incoming file from the flask server for scrambling/unscrambling
+
+        Returns
+        -------
+        BytesIO Buffer
+            The image after scramble/unscramble operation stored in a BytesIO
+            memory buffer
+        """
+
+        self.mode = mode
+        self.cycle = cycle
+        self.key = key
+        self.file = file
+
         self._preprocess()
 
-        if self.mode.upper() == "ENCODE":
-            self._encode()
-        elif self.mode.upper() == "DECODE":
-            self._decode()
+        if self.mode == "scramble":
+            self._scramble()
+        elif self.mode == "unscramble":
+            self._unscramble()
 
-        output_file = self._saveResult()
+        output_file = self._result()
 
         return output_file
