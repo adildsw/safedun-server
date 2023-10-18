@@ -3,7 +3,7 @@
 
 <img align='center' src='https://github.com/adildsw/safedun-server/blob/master/assets/logo.png' />
 
-<b>safedun-server</b> is a responsive web application for server-side image scrambling. Built with a very specific purpose of maintaining image privacy over web sharing, safedun-server can be hosted on the local network server, facilitating image scrambling directly to other devices on the network. safedun-server is made using a responsive, mobile-first web framework, making it platform-independent and usable over most mobile devices and computers alike.
+<b>safedun-server</b> is a server-side image scrambling web app.
 
 ## Getting Started
 The following instructions will help you get safedun-server up and running in your preferred server/port. Before proceeding to the installation, make sure that your system contains all the prerequisites.
